@@ -2,7 +2,6 @@ import requests
 import pytest
 from data.urls import base_url
 from data.data_files import StatusCompanies
-from pprint import pprint
 from src.my_requests import MyRequests
 
 status_list = StatusCompanies.status_list
@@ -14,7 +13,7 @@ class TestStatusCompanies:
 
     @pytest.mark.parametrize("status", status_list)
     def test_get_status_companies(self, status):
-        response = self.request.get(url=f'/?status={status}&limit=3&offset=0')
+        response = self.request.get(f'/companies/?status={status}&limit=3&offset=0')
         # print()
         # pprint(response.json())
         assert response.status_code == 200, f'Status code is not 200, status code is  {response.status_code}'
