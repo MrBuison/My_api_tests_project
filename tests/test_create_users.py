@@ -12,6 +12,7 @@ class TestCreateUsers:
     def test_create_user(self):
         print(self.body.get('first_name'))
         resource = MyRequests.post(url="/users/", data=self.body)
+        print(resource.json())
         print(resource.json()['first_name'] == self.body.get('first_name'), "first name was not created")
         print(resource.json()['last_name'] == self.body.get('last_name'), "last name was not created")
 
